@@ -38,10 +38,9 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .title
-    margin-top: .2rem
     line-height: .8rem
     background: #eee
     text-indent: .2rem
