@@ -3,7 +3,7 @@
     <div class="title">热销推荐</div>
 
     <ul>
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in list" :key="item.id">
         <img class="item-img" :src="item.imgUrl" />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -18,21 +18,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        title: '多伦多大学丘比特社团',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1504/47/4730a0c01664b63d.water.jpg_200x200_d7f52253.jpg',
-        desc: '太牛逼的社团了'
-      },
-      {
-        id: '0002',
-        title: '多伦多大学暴打henry社团',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1504/47/4730a0c01664b63d.water.jpg_200x200_d7f52253.jpg',
-        desc: '啦啦啦啦'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
