@@ -42,7 +42,7 @@ export default {
         this.hotCities = data.hotCities
       }
     },
-    handleLetterChange (letter) {
+    handleLetterChange: function (letter) {
       this.letter = letter
     }
   },

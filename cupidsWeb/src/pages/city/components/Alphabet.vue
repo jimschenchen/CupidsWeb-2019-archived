@@ -7,7 +7,7 @@
     @click="handleLetterClick"
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
-    @touchend="handleTouchEnd()"
+    @touchend="handleTouchEnd"
     >
       {{item}}
     </li>
