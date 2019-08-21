@@ -1,19 +1,19 @@
 <template>
   <div>
     <div class="banner" @click="handleBannerClick">
-      <img  class="banner-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566370062462&di=4a7fa89aa4953911d72019860ad7e959&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2Fb9c2673e216df62f6b5ea945cd25e21d296e1809.jpg" />
+      <img  class="banner-img" :src="bannerImg" />
       <div class="banner-info">
         <div class="banner-title">
-          明日方舟 - 阿米驴
+          {{sightName}}
         </div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe604;</span>
-          39
+            {{this.bannerImgs.length}}
         </div>
       </div>
     </div>
     <common-gallary
-    :imgs="imgs"
+    :imgs="bannerImgs"
     v-show="showGallary"
     @close="handleGallaryClose"
     >
@@ -28,10 +28,14 @@ export default {
   components: {
     CommonGallary
   },
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
   data () {
     return {
-      showGallary: false,
-      imgs: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566382466006&di=19ad84d825ebf9cc206dd1efe03b715e&imgtype=0&src=http%3A%2F%2Fu.candou.com%2Fs%2F500%2F2019%2F0507%2F1557195579708.gif']
+      showGallary: false
     }
   },
   methods: {
