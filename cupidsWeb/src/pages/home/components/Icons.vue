@@ -3,11 +3,13 @@
     <swiper :options="swiperOption">
 
      <swiper-slide v-for="(page, index) of pages" :key="index">
-       <div class="icon" v-for="item of page" :key="item.id">
-         <div class="icon-img">
-           <img class="icon-img-content" :src="item.imgUrl" />
+       <div class="icon-page">
+         <div class="icon" v-for="item of page" :key="item.id">
+           <div class="icon-img">
+             <img class="icon-img-content" :src="item.imgUrl" />
+           </div>
+           <p class="icon-desc">{{item.desc}}</p>
          </div>
-         <p class="icon-desc">{{item.desc}}</p>
        </div>
      </swiper-slide>
 
@@ -52,33 +54,30 @@ export default {
     padding-bottom: 50%
   .icons
     margin-top: .1rem
-    .icon
-      position: relative
-      overflow: hidden
-      float: left
-      height: 0
-      width: 25%
-      padding-bottom: 25%
-      .icon-img
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
-        bottom: .44rem
-        box-sizing: border-box
-        padding: .1rem
-        .icon-img-content
-          display: block
-          margin: 0 auto
-          height: 100%
-      .icon-desc
-        position: absolute
-        left: 0
-        right: 0
-        bottom: 0
-        height: .44rem
-        line-height: .44rem
-        color: $darkTextColor
-        text-align: center
-        ellipsis()
+    .icon-page
+      display: flex
+      justify-content: space-between
+      flex-direction: row
+      flex-wrap: wrap
+      .icon
+        flex: 1
+        position: relative
+        .icon-img
+          bottom: .44rem
+          box-sizing: border-box
+          padding: .1rem
+          .icon-img-content
+            display: block
+            margin: 0 auto
+            height: 100%
+        .icon-desc
+          position: absolute
+          left: 0
+          right: 0
+          bottom: 0
+          height: .44rem
+          line-height: .44rem
+          color: $darkTextColor
+          text-align: center
+          ellipsis()
 </style>
