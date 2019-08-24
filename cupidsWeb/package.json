@@ -1,7 +1,7 @@
 {
   "name": "cupids_website",
   "version": "1.0.0",
-  "description": "website for uoft cupids club",
+  "description": "website for UoftCupidsClub",
   "author": "jimschenchen (jimschenchen@gmail.com)",
   "private": true,
   "scripts": {
@@ -11,14 +11,19 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@material-ui/core": "^4.3.3",
+    "@material-ui/icons": "^4.2.1",
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
     "better-scroll": "^1.15.2",
     "fastclick": "^1.0.6",
+    "jquery": "^3.4.1",
+    "node-sass": "^4.12.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
+    "vue-material": "^1.0.0-beta-11",
     "vue-router": "^3.0.1",
     "vuex": "^3.1.1"
   },
@@ -57,6 +62,7 @@
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
     "rimraf": "^2.6.0",
+    "sass-loader": "^7.3.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
