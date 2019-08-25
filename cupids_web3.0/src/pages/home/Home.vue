@@ -29,11 +29,12 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Admin</v-toolbar-title>
+      <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
 <!--    header -->
 
 <!--  content -->
+    <parallax></parallax>
 
     <v-content>
       <v-container
@@ -90,12 +91,16 @@
 </template>
 
 <script>
+import Parallax from './components/Parallax'
+import axios from 'axios'
+
 export default {
-  name: 'Admin',
+  name: 'Home',
   props: {
     source: String
   },
   components: {
+    Parallax
   },
   data: () => ({
     drawer: null
@@ -106,7 +111,20 @@ export default {
     },
     routerToHome () {
       this.$router.push('/')
+    },
+    getHomeInfo: function () {
+      axios.get('/assets/api/home_info.json')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc: function (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        console.log(res.data.jim)
+      }
     }
-  }
+  },
+  mounted () {
+    this.getHomeInfo()
+  },
 }
 </script>

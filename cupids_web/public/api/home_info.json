@@ -1,0 +1,36 @@
+{
+  "ret": true,
+  "data": {
+	  "toolBarTitle": "Cupids Web",
+	  "parallax": {
+		  "heading": "Cupids Webiste",
+		  "subheading": "多大丘比特社团"
+	  },
+	  "drawer": {
+		  "home": {
+			  "id": "0001",
+			  "title": "Home",
+			  "icon": "home",
+			  "router": "/"
+		  },
+		  "admin": {
+			  "id": "0002",
+			  "title": "Admin",
+			  "icon": "home",
+			  "router": "/admin"
+		  },
+		  "login": {
+			  "id": "0003",
+			  "title": "Login",
+			  "icon": "home",
+			  "router": "/login"
+		  },
+		  "registar": {
+			  "id": "0004",
+			  "title": "Registar",
+			  "icon": "home",
+			  "router": "/registar"
+		  }
+	  }
+  }
+}

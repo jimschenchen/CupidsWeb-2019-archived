@@ -1,39 +1,40 @@
 <template>
   <v-app id="inspire">
+    <!-- drawer -->
     <v-navigation-drawer
       v-model="drawer"
       app
-    >
-      <v-list dense>
-        <v-list-item @click="routerToHome">
+      :dark="theme.dark"
+      >
+
+      <user-card></user-card>
+      <!-- usercard -->
+      <v-list dense v-for="item of drawerData" :key="item.id">
+        <v-list-item @click="routerTo(item.router)">
           <v-list-item-action>
-            <v-icon>home</v-icon>
+            <v-icon>{{item.icon}}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item @click="routerToAdmin">
-          <v-list-item-action>
-            <v-icon>contact_mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Admin</v-list-item-title>
+            <v-list-item-title>{{item.title}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
     </v-navigation-drawer>
+    <!-- drawer -->
+
     <v-app-bar
       app
-      color="pink"
-      dark
+      color="orange"
+      :dark="!theme.dark"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Admin</v-toolbar-title>
+      <v-toolbar-title>{{toolBarTitle}}</v-toolbar-title>
     </v-app-bar>
 <!--    header -->
 
 <!--  content -->
+    <parallax :parallaxData="parallaxData"></parallax>
 
     <v-content>
       <v-container
@@ -81,7 +82,7 @@
 
 <!--    footer -->
     <v-footer
-      color="indigo"
+      color="orange"
       app
     >
       <span class="white--text">&copy; 2019</span>
@@ -90,23 +91,59 @@
 </template>
 
 <script>
+import Parallax from './components/Parallax'
+import UserCard from './components/UserCard'
+import axios from 'axios'
+
 export default {
-  name: 'Admin',
+  name: 'Home',
   props: {
     source: String
   },
   components: {
+    Parallax,
+    UserCard
   },
   data: () => ({
-    drawer: null
+    drawer: null,
+    drawerData: {},
+    parallaxData: {},
+    toolBarTitle: String,
+    theme: Object
   }),
   methods: {
-    routerToAdmin () {
-      this.$router.push('/admin')
+    routerTo (address) {
+      console.log(address)
+      this.$router.push(address)
     },
-    routerToHome () {
-      this.$router.push('/')
+    getHomeInfo: function () {
+      axios.get('api/home_info.json')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc: function (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.drawerData = data.drawer
+        this.parallaxData = data.parallax
+        this.toolBarTitle = data.toolBarTitle
+      }
+    },
+    getTheme: function () {
+      axios.get('api/theme.json')
+        .then(this.getThemeSucc)
+    },
+    getThemeSucc: function (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        this.theme = res.data
+      }
     }
+  },
+  mounted () {
+    this.getHomeInfo()
+    this.getTheme()
   }
 }
+
 </script>
