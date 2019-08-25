@@ -113,7 +113,6 @@ export default {
   }),
   methods: {
     routerTo (address) {
-      console.log(address)
       this.$router.push(address)
     },
     getHomeInfo: function () {

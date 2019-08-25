@@ -58,6 +58,7 @@
                     name="login"
                     prepend-icon="supervised_user_circle "
                     type="text"
+                    v-model="form.username"
                   ></v-text-field>
 
                   <v-text-field
@@ -66,12 +67,14 @@
                     name="password"
                     prepend-icon="lock"
                     type="password"
+                    v-model="form.password"
                   ></v-text-field>
+
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="primary" @click="login()">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -88,7 +91,11 @@ export default {
     source: String
   },
   data: () => ({
-    drawer: null
+    drawer: null,
+    form: {
+      username: '',
+      password: ''
+    }
   }),
   methods: {
     routerToRegistar () {
@@ -96,6 +103,9 @@ export default {
     },
     routerToHome () {
       this.$router.push('/')
+    },
+    login () {
+      this.$store.dispatch('login', this.form)
     }
   }
 }

@@ -17,8 +17,7 @@
     "paths": {
       "@/*": [
         "src/*"
-      ],
-	  "api/*": ["public/api/*"]
+      ]
     },
     "lib": [
       "esnext",
