@@ -1,7 +1,7 @@
 export default {
   user: {
-    avatar: "",
-    name: "NoName",
-    quote: "NoQuote"
+    avatar: '',
+    name: 'NoName',
+    password: 'NoQuote'
   }
 }

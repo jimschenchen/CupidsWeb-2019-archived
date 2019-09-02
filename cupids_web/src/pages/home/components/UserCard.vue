@@ -9,7 +9,7 @@
        </v-list-item-avatar>
        <v-list-item-content>
          <v-list-item-title class="headline">{{this.$store.state.user.name}}</v-list-item-title>
-         <v-list-item-subtitle>{{this.$store.state.user.quote}}</v-list-item-subtitle>
+         <v-list-item-subtitle>{{this.$store.state.user.password}}</v-list-item-subtitle>
        </v-list-item-content>
      </v-list-item>
   </v-card>

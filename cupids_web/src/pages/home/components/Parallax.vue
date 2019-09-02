@@ -1,7 +1,7 @@
 <template>
   <v-parallax
     dark
-    src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+    src="https://www.hdwallpapers.in/download/yellow_blue_material_design_4k-wide.jpg"
   >
     <v-row
       align="center"

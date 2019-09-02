@@ -85,6 +85,9 @@
 </template>
 
 <script>
+import Qs from 'qs'
+import axios from 'axios'
+
 export default {
   name: 'Login',
   props: {
@@ -105,7 +108,24 @@ export default {
       this.$router.push('/')
     },
     login () {
-      this.$store.dispatch('login', this.form)
+    // 登录方法
+      // 配置Qs表单
+      let data = {
+        'username': this.form.username,
+        'password': this.form.password
+      }
+      // axios请求
+      axios({
+        method: 'post',
+        url: 'oapi/login.php',
+        data: Qs.stringify(data)
+      }).then((res) => {
+        res = res.data
+        if (res.ret && res.data) {
+          const user = res.data
+          this.$store.dispatch('loginSucc', user)
+        }
+      })
     }
   }
 }
