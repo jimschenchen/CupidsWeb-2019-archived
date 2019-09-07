@@ -5,11 +5,13 @@
    >
      <v-list-item>
        <v-list-item-avatar color="grey">
-         <img v-show="this.$store.state.user.avatar" :src="this.$store.state.user.avatar"/>
+         <div v-if="this.user.avatar">
+           <img :src="this.user.avatar"/>
+         </div>
        </v-list-item-avatar>
        <v-list-item-content>
-         <v-list-item-title class="headline">{{this.$store.state.user.name}}</v-list-item-title>
-         <v-list-item-subtitle>{{this.$store.state.user.password}}</v-list-item-subtitle>
+         <v-list-item-title class="headline">{{this.user.name}}</v-list-item-title>
+         <v-list-item-subtitle>{{this.user.password}}</v-list-item-subtitle>
        </v-list-item-content>
      </v-list-item>
   </v-card>
@@ -17,7 +19,17 @@
 
 <script>
 export default {
-  name: 'UserCard'
+  name: 'UserCard',
+  data: () => ({
+    user: {
+      avatar: '',
+      name: 'NoName',
+      password: 'NoQuote'
+    }
+  }),
+  activated () {
+    this.user = this.$store.getters.getUser
+  }
 }
 </script>
 
