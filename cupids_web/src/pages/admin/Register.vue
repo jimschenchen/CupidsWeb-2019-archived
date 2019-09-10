@@ -148,8 +148,11 @@ export default {
           if (res.data.ret === 0) {
             // 发送数据到store
             const user = res.data.data
-            this.$store.dispatch('loginSucc', user)
-            this.alertMsg(true, '注册成功', 'success')
+            this.alertMsg(true, '注册成功，正在转到登录界面...', 'success')
+            // 砸瓦鲁多！
+            setTimeout(() => {
+              this.routerTo('/login')
+            }, 3000)
           } else if (res.data.ret === -1) {
             this.alertMsg(true, '注册失败', 'warning')
           }

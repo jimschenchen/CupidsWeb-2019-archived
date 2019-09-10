@@ -148,10 +148,9 @@ export default {
           if (res.data.ret === 0) {
             // 发送数据到store
             const user = res.data.data
-            this.alertMsg(true, '登录成功', 'success')
+            this.alertMsg(true, '登录成功，正在转到主页...', 'success')
             this.$store.dispatch('loginSucc', user)
             // 砸瓦鲁多！
-            console.log(this.$store.getters.getUser)
             setTimeout(() => {
               this.routerTo('/')
             }, 3000)
