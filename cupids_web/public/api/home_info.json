@@ -29,7 +29,7 @@
 			  "id": "0004",
 			  "title": "Registar",
 			  "icon": "home",
-			  "router": "/registar"
+			  "router": "/register"
 		  }
 	  }
   }

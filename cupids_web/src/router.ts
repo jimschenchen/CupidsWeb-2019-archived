@@ -22,9 +22,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ '@/pages/admin/Login')
     },
     {
-      path: '/registar',
-      name: 'Registar',
-      component: () => import(/* webpackChunkName: "about" */ '@/pages/admin/Registar')
+      path: '/register',
+      name: 'Register',
+      component: () => import(/* webpackChunkName: "about" */ '@/pages/admin/Register')
     },
     {
       path: '/admin',

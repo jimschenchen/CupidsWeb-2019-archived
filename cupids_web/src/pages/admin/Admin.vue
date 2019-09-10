@@ -5,7 +5,7 @@
       app
     >
       <v-list dense>
-        <v-list-item @click="routerToHome">
+        <v-list-item @click="routerTo('/')">
           <v-list-item-action>
             <v-icon>home</v-icon>
           </v-list-item-action>
@@ -13,7 +13,7 @@
             <v-list-item-title>home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="routerToAdmin">
+        <v-list-item @click="routerTo('/admin')">
           <v-list-item-action>
             <v-icon>contact_mail</v-icon>
           </v-list-item-action>
@@ -101,11 +101,8 @@ export default {
     drawer: null
   }),
   methods: {
-    routerToAdmin () {
-      this.$router.push('/admin')
-    },
-    routerToHome () {
-      this.$router.push('/')
+    routerToAdmin (addr) {
+      this.$router.push(addr)
     }
   }
 }

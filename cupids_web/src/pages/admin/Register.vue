@@ -22,7 +22,7 @@
                 dark
                 flat
               >
-                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-toolbar-title>Registar form</v-toolbar-title>
                 <div class="flex-grow-1"></div>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
@@ -42,7 +42,7 @@
                     <v-btn
                       icon
                       large
-                      @click="routerTo('/register')"
+                      @click="routerTo('/login')"
                       v-on="on"
                     >
                       <v-icon>hourglass_full</v-icon>
@@ -91,7 +91,7 @@ import axios from 'axios'
 import Alert from './components/Alert'
 
 export default {
-  name: 'Login',
+  name: 'Register',
   components: {
     Alert
   },
@@ -138,22 +138,20 @@ export default {
       // axios请求
       axios({
         method: 'post',
-        url: 'oapi/login.php',
+        url: 'oapi/register.php',
         data: Qs.stringify(data)
       }).then((res) => {
         // 接收请求判定
+        console.log(res)
         if (res.status === 200) {
           // status: 200
-          console.log(res)
           if (res.data.ret === 0) {
             // 发送数据到store
             const user = res.data.data
             this.$store.dispatch('loginSucc', user)
-            this.alertMsg(true, '登录成功', 'success')
+            this.alertMsg(true, '注册成功', 'success')
           } else if (res.data.ret === -1) {
-            this.alertMsg(true, '没有找到该用户', 'warning')
-          } else if (res.data.ret === -2) {
-            this.alertMsg(true, '密码错误', 'error')
+            this.alertMsg(true, '注册失败', 'warning')
           }
         } else {
           // status != 200
