@@ -148,8 +148,13 @@ export default {
           if (res.data.ret === 0) {
             // 发送数据到store
             const user = res.data.data
-            this.$store.dispatch('loginSucc', user)
             this.alertMsg(true, '登录成功', 'success')
+            this.$store.dispatch('loginSucc', user)
+            // 砸瓦鲁多！
+            console.log(this.$store.getters.getUser)
+            setTimeout(() => {
+              this.routerTo('/')
+            }, 3000)
           } else if (res.data.ret === -1) {
             this.alertMsg(true, '没有找到该用户', 'warning')
           } else if (res.data.ret === -2) {

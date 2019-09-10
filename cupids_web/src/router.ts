@@ -30,6 +30,11 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       component: () => import(/* webpackChunkName: "about" */ '@/pages/admin/Admin')
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: () => import(/* webpackChunkName: "about" */ '@/pages/admin/Logout')
     }
   ]
 })

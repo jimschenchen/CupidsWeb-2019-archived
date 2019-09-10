@@ -7,18 +7,22 @@
       :dark="theme.dark"
       >
 
-      <user-card></user-card>
+      <user-card :user="user"></user-card>
       <!-- usercard -->
-      <v-list dense v-for="item of drawerData" :key="item.id">
-        <v-list-item @click="routerTo(item.router)">
-          <v-list-item-action>
-            <v-icon>{{item.icon}}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{item.title}}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      <div v-for="item of drawerData" :key="item.id">
+        <template v-if="listCheck(item.id)">
+          <v-list dense >
+            <v-list-item @click="routerTo(item.router)">
+              <v-list-item-action>
+                <v-icon>{{item.icon}}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{item.title}}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </template>
+      </div>
 
     </v-navigation-drawer>
     <!-- drawer -->
@@ -109,7 +113,12 @@ export default {
     drawerData: {},
     parallaxData: {},
     toolBarTitle: String,
-    theme: Object
+    theme: Object,
+    user: {
+      avatar: '',
+      name: 'NoName',
+      password: 'NoQuote'
+    }
   }),
   methods: {
     routerTo (address) {
@@ -137,11 +146,31 @@ export default {
       if (res.ret && res.data) {
         this.theme = res.data
       }
+    },
+    listCheck (id) {
+      // 验证用户权限菜单
+      const user = this.$store.state.user
+      if (id === '0003' || id === '0004') {
+        if (user.login === 0) {
+          return false
+        }
+      }
+      if (id === '0005') {
+        if (user.login === -1) {
+          return false
+        }
+      }
+      return true
     }
   },
   mounted () {
     this.getHomeInfo()
     this.getTheme()
+    this.user = this.$store.state.user
+  },
+  activated () {
+    this.user = this.$store.state.user
+    console.log(this.user)
   }
 }
 

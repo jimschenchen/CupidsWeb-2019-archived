@@ -32,14 +32,15 @@
 	// 输出数据
 	if(count($res)>0){
 		if(password_verify($ps,$res[0]["password"])){
-			$data = array('name' => $res[0]["username"], 'avatar' => $res[0]["avatar"]);
+			$data = array('name' => $res[0]["username"], 'avatar' => $res[0]["avatar"], 'login' => 0);
 			echo json_format(0, $data, '登录成功');
 		}else{
-			$data = array('name' => $res[0]["username"], 'avatar' => $res[0]["avatar"]);
+			$data = array('name' => $res[0]["username"], 'avatar' => $res[0]["avatar"], 'login' => -1);
 			echo json_format(-2, $data, '密码错误');
 		}
 	}else{
-		echo json_format(-1, 'null', '未找到该用户');
+		$data = array('name' => '', 'avatar' => '', 'login' => -1);
+		echo json_format(-1, $data, '未找到该用户');
 	}
  
 	$conn->close();

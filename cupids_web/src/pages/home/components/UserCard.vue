@@ -5,7 +5,9 @@
    >
      <v-list-item>
        <v-list-item-avatar color="grey">
-         <img :src="this.user.avatar"/>
+         <template v-if="this.user.avatar">
+           <img :src="this.user.avatar"/>
+         </template>
        </v-list-item-avatar>
        <v-list-item-content>
          <v-list-item-title class="headline">{{this.user.name}}</v-list-item-title>
@@ -18,15 +20,8 @@
 <script>
 export default {
   name: 'UserCard',
-  data: () => ({
-    user: {
-      avatar: '',
-      name: 'NoName',
-      password: 'NoQuote'
-    }
-  }),
-  activated () {
-    this.user = this.$store.getters.getUser
+  props: {
+    user: Object
   }
 }
 </script>

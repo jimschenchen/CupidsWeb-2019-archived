@@ -30,6 +30,12 @@
 			  "title": "Registar",
 			  "icon": "home",
 			  "router": "/register"
+		  },
+		  "logout": {
+			  "id": "0005",
+			  "title": "Logout",
+			  "icon": "home",
+			  "router": "/logout"
 		  }
 	  }
   }

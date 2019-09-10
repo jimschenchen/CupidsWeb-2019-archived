@@ -11,17 +11,21 @@ export default new Vuex.Store({
   mutations: {
     //登录成功
     loginSucc (state, user) {
+      state.user = user
       localStorage.setItem('user', JSON.stringify(user))
+      // JSON.parse(localStorage.getItem('user'))
+    },
+    logout (state) {
+      state.user = state.defaultUser
+      localStorage.removeItem('user')
     }
   },
   actions: {
     loginSucc (ctx, user) {
       ctx.commit('loginSucc', user)
-    }
-  },
-  getters: {
-    getUser: () => {
-      return JSON.parse(localStorage.getItem('user'))
+    },
+    logout (ctx) {
+      ctx.commit('logout')
     }
   }
 })
