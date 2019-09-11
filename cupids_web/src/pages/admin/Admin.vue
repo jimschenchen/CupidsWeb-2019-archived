@@ -101,7 +101,7 @@ export default {
     drawer: null
   }),
   methods: {
-    routerToAdmin (addr) {
+    routerTo (addr) {
       this.$router.push(addr)
     }
   }

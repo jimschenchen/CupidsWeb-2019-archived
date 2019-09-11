@@ -110,7 +110,6 @@ export default {
     drawerData: {},
     parallaxData: {},
     toolBarTitle: String,
-    theme: Object,
     user: {
       avatar: '',
       name: 'NoName',
@@ -122,10 +121,12 @@ export default {
       this.$router.push(address)
     },
     getHomeInfo: function () {
+      // 获取主页信息
       axios.get('api/home_info.json')
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc: function (res) {
+      // 获取主页信息成功
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
@@ -134,7 +135,7 @@ export default {
         this.toolBarTitle = data.toolBarTitle
       }
     },
-    listCheck (id) {
+    listCheck: function (id) {
       // 验证用户权限菜单
       const user = this.$store.state.user
       if (id === '0003' || id === '0004') {
@@ -151,13 +152,14 @@ export default {
     }
   },
   mounted () {
+    // 加载主页信息
     this.getHomeInfo()
-    this.getTheme()
+    // 加载用户信息
     this.user = this.$store.state.user
   },
   activated () {
+    // 加载用户信息
     this.user = this.$store.state.user
-    console.log(this.user)
   }
 }
 
