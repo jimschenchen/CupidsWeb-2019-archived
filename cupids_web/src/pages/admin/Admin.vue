@@ -4,6 +4,10 @@
       v-model="drawer"
       app
     >
+      <!-- usercard -->
+      <user-card :user="user"></user-card>
+      <!-- usercard -->
+
       <v-list dense>
         <v-list-item @click="routerTo('/')">
           <v-list-item-action>
@@ -36,44 +40,21 @@
 <!--  content -->
 
     <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/zgxeLQ"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
+      <v-container>
+        <v-row align="start" justify="start">
+          <v-col md="4">
+            <admin-card :user="user"></admin-card>
+          </v-col>
+          <v-col md="8">
+            <v-card
+              class="mx-auto"
+            >
+              <v-card-title>I'm a title</v-card-title>
+              <v-card-text>I'm card text</v-card-text>
+              <v-card-actions>
+                <v-btn text>Click</v-btn>
+              </v-card-actions>
+            </v-card>
           </v-col>
         </v-row>
       </v-container>
@@ -90,25 +71,36 @@
 </template>
 
 <script>
+import UserCard from '../home/components/UserCard'
+import AdminCard from './components/AdminCard'
 export default {
   name: 'Admin',
   props: {
     source: String
   },
   components: {
+    UserCard,
+    AdminCard
   },
   data: () => ({
-    drawer: null
+    drawer: null,
+    user: {
+      avatar: '',
+      name: 'NoName',
+      password: 'NoQuote'
+    }
   }),
   methods: {
+    // router方法
     routerTo (addr) {
       this.$router.push(addr)
     }
   },
   mounted () {
-    // 加载主页信息
-    this.getHomeInfo()
     // 加载用户信息
+    this.$store.dispatch('update')
+    this.user = this.$store.state.user
+    // 判定登录
     if (this.$store.state.user.login !== 0) {
       // 未登录返回主页
       this.routerTo('/')
@@ -116,6 +108,9 @@ export default {
   },
   activated () {
     // 加载用户信息
+    this.$store.dispatch('update')
+    this.user = this.$store.state.user
+    // 判定登录
     if (this.$store.state.user.login !== 0) {
       // 未登录返回主页
       this.routerTo('/')
