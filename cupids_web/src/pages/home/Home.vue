@@ -4,9 +4,7 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      :dark="theme.dark"
       >
-
       <user-card :user="user"></user-card>
       <!-- usercard -->
       <div v-for="item of drawerData" :key="item.id">
@@ -30,7 +28,6 @@
     <v-app-bar
       app
       color="orange"
-      :dark="!theme.dark"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>{{toolBarTitle}}</v-toolbar-title>
@@ -135,16 +132,6 @@ export default {
         this.drawerData = data.drawer
         this.parallaxData = data.parallax
         this.toolBarTitle = data.toolBarTitle
-      }
-    },
-    getTheme: function () {
-      axios.get('api/theme.json')
-        .then(this.getThemeSucc)
-    },
-    getThemeSucc: function (res) {
-      res = res.data
-      if (res.ret && res.data) {
-        this.theme = res.data
       }
     },
     listCheck (id) {
