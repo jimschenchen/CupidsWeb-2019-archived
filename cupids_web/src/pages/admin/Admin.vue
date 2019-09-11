@@ -42,10 +42,10 @@
     <v-content>
       <v-container>
         <v-row align="start" justify="start">
-          <v-col md="4">
+          <v-col md="3">
             <admin-card :user="user"></admin-card>
           </v-col>
-          <v-col md="8">
+          <v-col md="9">
             <v-card
               class="mx-auto"
             >
