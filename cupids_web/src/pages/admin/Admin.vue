@@ -13,12 +13,12 @@
             <v-list-item-title>home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="routerTo('/admin')">
+        <v-list-item @click="routerTo('/logout')">
           <v-list-item-action>
             <v-icon>contact_mail</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Admin</v-list-item-title>
+            <v-list-item-title>Logout</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -103,6 +103,22 @@ export default {
   methods: {
     routerTo (addr) {
       this.$router.push(addr)
+    }
+  },
+  mounted () {
+    // 加载主页信息
+    this.getHomeInfo()
+    // 加载用户信息
+    if (this.$store.state.user.login !== 0) {
+      // 未登录返回主页
+      this.routerTo('/')
+    }
+  },
+  activated () {
+    // 加载用户信息
+    if (this.$store.state.user.login !== 0) {
+      // 未登录返回主页
+      this.routerTo('/')
     }
   }
 }

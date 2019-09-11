@@ -139,11 +139,13 @@ export default {
       // 验证用户权限菜单
       const user = this.$store.state.user
       if (id === '0003' || id === '0004') {
+        // 登录后消失
         if (user.login === 0) {
           return false
         }
       }
-      if (id === '0005') {
+      if (id === '0005' || id === '0002') {
+        // 未登录消失
         if (user.login === -1) {
           return false
         }
@@ -155,10 +157,12 @@ export default {
     // 加载主页信息
     this.getHomeInfo()
     // 加载用户信息
+    this.$store.dispatch('update')
     this.user = this.$store.state.user
   },
   activated () {
     // 加载用户信息
+    this.$store.dispatch('update')
     this.user = this.$store.state.user
   }
 }

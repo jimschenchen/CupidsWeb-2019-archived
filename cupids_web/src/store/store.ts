@@ -18,6 +18,12 @@ export default new Vuex.Store({
     logout (state) {
       state.user = state.defaultUser
       localStorage.removeItem('user')
+    },
+    update (state) {
+      // 实时同步state与localstorage数据
+      if (localStorage.getItem('user')) {
+        state.user = JSON.parse(localStorage.getItem('user'))
+      }
     }
   },
   actions: {
@@ -26,6 +32,9 @@ export default new Vuex.Store({
     },
     logout (ctx) {
       ctx.commit('logout')
+    },
+    update (ctx) {
+      ctx.commit('update')
     }
   }
 })

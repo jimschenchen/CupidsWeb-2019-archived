@@ -155,6 +155,8 @@ export default {
             }, 3000)
           } else if (res.data.ret === -1) {
             this.alertMsg(true, '注册失败', 'warning')
+          } else if (res.data.ret === -2) {
+            this.alertMsg(true, '已存在相同用户名', 'warning')
           }
         } else {
           // status != 200

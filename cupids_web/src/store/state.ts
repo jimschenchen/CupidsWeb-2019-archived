@@ -2,7 +2,7 @@ export default {
   user: {
     // 默认信息
     avatar: '',
-    name: 'NoName form state',
+    name: 'No Name',
     password: 'NoQuote',
     login: -1
   },
