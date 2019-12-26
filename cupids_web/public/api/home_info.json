@@ -1,10 +1,10 @@
 {
   "ret": true,
   "data": {
-	  "toolBarTitle": "Cupids Web",
+	  "toolBarTitle": "圣诞节快乐",
 	  "parallax": {
-		  "heading": "Cupids Webiste",
-		  "subheading": "多大丘比特社团"
+		  "heading": "圣诞节快乐",
+		  "subheading": "霜星"
 	  },
 	  "drawer": {
 		  "home": {

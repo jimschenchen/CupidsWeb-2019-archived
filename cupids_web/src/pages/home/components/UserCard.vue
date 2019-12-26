@@ -1,7 +1,7 @@
 <template>
   <v-card
      class="mx-auto"
-     color="orange"
+     color="blue"
    >
      <v-list-item>
        <v-list-item-avatar color="grey">

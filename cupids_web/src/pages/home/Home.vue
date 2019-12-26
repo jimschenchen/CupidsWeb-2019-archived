@@ -25,14 +25,15 @@
     </v-navigation-drawer>
     <!-- drawer -->
 
+    <!--    header -->
     <v-app-bar
       app
-      color="orange"
+      color="blue"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>{{toolBarTitle}}</v-toolbar-title>
     </v-app-bar>
-<!--    header -->
+    <!--    header -->
 
 <!--  content -->
     <parallax :parallaxData="parallaxData"></parallax>
@@ -43,7 +44,7 @@
         fluid
       >
         <v-row
-          align="center"
+          align="center" 
           justify="center"
         >
           <v-col class="text-center">
@@ -83,7 +84,7 @@
 
 <!--    footer -->
     <v-footer
-      color="orange"
+      color="blue"
       app
     >
       <span class="white--text">&copy; 2019</span>

@@ -1,7 +1,8 @@
 <template>
   <v-parallax
     dark
-    src="https://www.hdwallpapers.in/download/yellow_blue_material_design_4k-wide.jpg"
+    height="800"
+    src="@/assets/霜星.jpg"
   >
     <v-row
       align="center"
