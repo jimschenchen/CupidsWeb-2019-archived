@@ -44,7 +44,7 @@
         fluid
       >
         <v-row
-          align="center" 
+          align="center"
           justify="center"
         >
           <v-col class="text-center">
