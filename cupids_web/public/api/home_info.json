@@ -2,11 +2,11 @@
   "ret": true,
   "data": {
 	  "toolBarTitle": "圣诞节快乐",
-	  "parallax": {
+	  "parallaxData": {
 		  "heading": "圣诞节快乐",
 		  "subheading": "霜星"
 	  },
-	  "drawer": {
+	  "drawerData": {
 		  "home": {
 			  "id": "0001",
 			  "title": "Home",

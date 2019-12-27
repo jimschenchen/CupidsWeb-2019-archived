@@ -7,7 +7,7 @@
       >
       <user-card :user="user"></user-card>
       <!-- usercard -->
-      <div v-for="item of drawerData" :key="item.id">
+      <div v-for="item of homeInfo.drawerData" :key="item.id">
         <template v-if="listCheck(item.id)">
           <v-list dense >
             <v-list-item @click="routerTo(item.router)">
@@ -31,12 +31,12 @@
       color="blue"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>{{toolBarTitle}}</v-toolbar-title>
+      <v-toolbar-title>{{homeInfo.toolBarTitle}}</v-toolbar-title>
     </v-app-bar>
     <!--    header -->
 
 <!--  content -->
-    <parallax :parallaxData="parallaxData"></parallax>
+    <parallax :parallaxData="homeInfo.parallaxData"></parallax>
 
     <v-content>
       <v-container
@@ -108,9 +108,11 @@ export default {
   },
   data: () => ({
     drawer: null,
-    drawerData: {},
-    parallaxData: {},
-    toolBarTitle: String,
+    homeInfo: {
+      toolBarTitle: 'Title',
+      parallaxData: {},
+      drawerData: {}
+    },
     user: {
       avatar: '',
       name: 'NoName',
@@ -130,10 +132,7 @@ export default {
       // 获取主页信息成功
       res = res.data
       if (res.ret && res.data) {
-        const data = res.data
-        this.drawerData = data.drawer
-        this.parallaxData = data.parallax
-        this.toolBarTitle = data.toolBarTitle
+        this.homeInfo = res.data
       }
     },
     listCheck: function (id) {
