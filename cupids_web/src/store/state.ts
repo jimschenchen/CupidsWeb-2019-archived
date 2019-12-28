@@ -2,15 +2,15 @@ export default {
   user: {
     // 默认信息
     avatar: '',
-    name: 'No Name',
-    password: 'NoQuote',
+    name: 'Null',
+    password: 'Null',
     login: -1
   },
   defaultUser: {
     // 回滚信息
     avatar: '',
-    name: 'NoName form state',
-    password: 'NoQuote',
+    name: 'Null',
+    password: 'Null',
     login: -1
   }
 }

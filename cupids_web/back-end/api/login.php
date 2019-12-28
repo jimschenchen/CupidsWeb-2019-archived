@@ -9,7 +9,7 @@
 	//数据库信息
 	$servername = "localhost";
 	$username = "root";
-	$password = "root";
+	$password = "060210";
 	$dbname = "cupidsweb";
 	
 

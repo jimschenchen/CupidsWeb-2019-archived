@@ -86,8 +86,8 @@ export default {
     drawer: null,
     user: {
       avatar: '',
-      name: 'NoName',
-      password: 'NoQuote'
+      name: 'Null',
+      password: 'Null'
     }
   }),
   methods: {

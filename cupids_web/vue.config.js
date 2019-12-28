@@ -12,9 +12,11 @@ module.exports = {
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          '^/oapi': 'http://localhost:80/api', // rewrite path
+          // '^/oapi': 'http://localhost:80/api', // rewrite path
+          '^/oapi': './public/oapi'
         }
       }
     }
-  }
+  },
+  publicPath: '/cupidsWeb/'
 }

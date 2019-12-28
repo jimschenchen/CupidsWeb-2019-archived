@@ -115,8 +115,8 @@ export default {
     },
     user: {
       avatar: '',
-      name: 'NoName',
-      password: 'NoQuote'
+      name: 'Null',
+      password: 'Null'
     }
   }),
   methods: {
